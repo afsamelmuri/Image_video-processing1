@@ -1,0 +1,15 @@
+from PIL import Image
+import matplotlib.pyplot as plt
+
+# Read the image
+image_path = r"C:\Users\Lenovo\Downloads\daimond pp\2nd sem video lab\football.jfif"
+image = Image.open(image_path)
+
+# Display the image
+plt.imshow(image)
+plt.axis('off')  # Hide the axis
+plt.show()
+
+# Save the image
+save_path = r"C:\Users\Lenovo\Downloads\daimond pp\2nd sem video lab\football.jfif"
+image.save(save_path)
