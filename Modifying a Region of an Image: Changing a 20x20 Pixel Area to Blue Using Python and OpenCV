@@ -1,0 +1,41 @@
+import cv2
+import matplotlib.pyplot as plt
+
+# Define the path to the image
+image_path = r"C:\Users\Lenovo\Downloads\daimond pp\2nd sem video lab\football.jfif"
+
+# Load the image in BGR format
+image_bgr = cv2.imread(image_path)
+
+# Check if the image was loaded successfully
+if image_bgr is None:
+    print("Error: Could not load image. Check the file path.")
+else:
+    # Define the size of the region
+    region_size = 20
+
+    # Get image dimensions
+    height, width, _ = image_bgr.shape
+
+    # Ensure the region fits within the image dimensions
+    if region_size > height or region_size > width:
+        print("Error: The specified region size exceeds image dimensions.")
+    else:
+        # Define the top-left corner of the region
+        top_left_x, top_left_y = 0, 0
+
+        # Define the bottom-right corner of the region
+        bottom_right_x = top_left_x + region_size
+        bottom_right_y = top_left_y + region_size
+
+        # Set the region to blue (BGR format: [255, 0, 0])
+        image_bgr[top_left_y:bottom_right_y, top_left_x:bottom_right_x] = [255, 0, 0]
+
+        # Convert BGR image to RGB for display
+        image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+
+        # Display the modified image
+        plt.imshow(image_rgb)
+        plt.title('Top-Left 20x20 Region Changed to Blue')
+        plt.axis('off')  # Hide axes
+        plt.show()
