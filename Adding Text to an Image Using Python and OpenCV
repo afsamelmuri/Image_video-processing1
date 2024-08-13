@@ -1,0 +1,40 @@
+import cv2
+import matplotlib.pyplot as plt
+
+# Define the path to the image
+image_path = r"C:\Users\Lenovo\Downloads\daimond pp\2nd sem video lab\football.jfif"
+
+# Load the image in BGR format
+image_bgr = cv2.imread(image_path)
+
+# Check if the image was loaded successfully
+if image_bgr is None:
+    print("Error: Could not load image. Check the file path.")
+else:
+    # Define text parameters
+    text = "Hello"
+    position = (50, 50)  # Position (x, y) where the text will start
+    font_scale = 1        # Scale factor for the font size
+    font_color = (0, 255, 0)  # Font color in BGR format (green)
+    font_thickness = 2     # Thickness of the font stroke
+    font_type = cv2.FONT_HERSHEY_SIMPLEX  # Font type
+
+    # Add text to the image
+    cv2.putText(
+        image_bgr,              # Image
+        text,                  # Text to display
+        position,              # Position of the text (bottom-left corner)
+        font_type,             # Font type
+        font_scale,            # Font scale (size)
+        font_color,            # Font color (BGR format)
+        font_thickness         # Thickness of the font stroke
+    )
+
+    # Convert BGR image to RGB for display
+    image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
+
+    # Display the image with the text
+    plt.imshow(image_rgb)
+    plt.title('Image with Text')
+    plt.axis('off')  # Hide axes
+    plt.show()
